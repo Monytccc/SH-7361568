@@ -22,8 +22,15 @@ userId = "herl4mbang"
 # Kirim formulir
 submit_form(url, userId)
 
-# Tunda pengiriman formulir selama 12 jam
-time.sleep(43200)
+# Buat fungsi untuk mengeksekusi script
+def execute_script():
+    # Cetak waktu eksekusi
+    print("Script dieksekusi pada:", time.strftime("%d %b %Y %H:%M:%S"))
+    # Jalankan fungsi submit_form
+    submit_form(url, userId)
 
-# Kirim formulir lagi
-submit_form(url, userId)
+# Eksekusi script
+while True:
+    execute_script()
+    # Tunda eksekusi selama 12 jam
+    time.sleep(60 * 60 * 12)
