@@ -2,7 +2,7 @@ import time
 import requests
 
 url = "https://qlizz.com/bif/send"
-params = {'userId': 'atomic.bang'}
+params = {'userId': 'herl4mbang'}
 
 def run_script():
     # Lakukan POST request
