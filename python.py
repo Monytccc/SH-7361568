@@ -1,36 +1,22 @@
-import requests
 import time
+import requests
 
-def submit_form(url, userId):
-    # Buat request POST ke URL formulir
-    payload = {"userId": userId}
-    response = requests.post(url, data=payload)
+url = "https://qlizz.com/bif/send"
+params = {'userId': 'atomic.bang'}
 
-    # Cek status kode respons
+def run_script():
+    # Lakukan POST request
+    response = requests.post(url, params=params)
+
+    # Cek status code
     if response.status_code == 200:
-        # Jika berhasil, cetak pesan sukses
-        print("Formulir berhasil dikirim!")
+        print("Request berhasil dengan status code 200")
+        print("Response:")
+        print(response.text)
     else:
-        # Jika gagal, cetak pesan kesalahan
-        print("Ada kesalahan saat mengirim formulir:", response.status_code)
+        print(f"Request gagal dengan status code {response.status_code}")
 
-
-# Contoh penggunaan
-url = "https://buyinstafollowers.xyz/"
-userId = "herl4mbang"
-
-# Kirim formulir
-submit_form(url, userId)
-
-# Buat fungsi untuk mengeksekusi script
-def execute_script():
-    # Cetak waktu eksekusi
-    print("Script dieksekusi pada:", time.strftime("%d %b %Y %H:%M:%S"))
-    # Jalankan fungsi submit_form
-    submit_form(url, userId)
-
-# Eksekusi script
+# Buat loop untuk menjalankan script setiap 12 jam
 while True:
-    execute_script()
-    # Tunda eksekusi selama 12 jam
-    time.sleep(60 * 60 * 12)
+    run_script()
+    time.sleep(43200)  # 43200 detik = 12 jam
